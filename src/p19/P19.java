@@ -55,22 +55,24 @@ public class P19 {
                             maxValue = arrayPoints[i];
                             maxPosition = i;
                         }
-                        System.out.println("The winner is: " + arraynames[maxPosition]);
-                    }
 
+                    }
+                    System.out.println("The winner is: " + arraynames[maxPosition]);
+                    break;
                 case 3:
-                /*    int second=0;
-                    for (int i = 0; i < arrayNmax.length; i++) {
-                        if (maxPosition != arrayPoints2[i]) {
+                    int pointChampion = 0;
+                    int positionChampion2 = 0;
 
-                            if (arrayPoints2[i] > second) {
-                                second = arrayPoints2[i];
-                            }
-                        }                        
+                    for (int i = 0; i < arraynames.length; i++) {
+                        if (pointChampion < arrayPoints[i] && i != positionChampion2) {
+                            pointChampion = arrayPoints[i];
+                            positionChampion2 = i;
+                        }
+
                     }
-                    System.out.println("El segundo numero mayor es: " + second);
-                    
-                    break;*/
+                    System.out.println("The second team is: " + arraynames[positionChampion2]);
+
+                    break;
 
                 case 4: //ok
                     int lessGoals = 0;
@@ -83,15 +85,16 @@ public class P19 {
                     System.out.println("The team that has received fewer goals is: " + arraynames[lessGoals]);
                     break;
 
-                case 5: //no aparece el sout
+                case 5: //ok
                     int moreGoals = 0;
                     for (int i = 1; i < arrayNmax.length; i++) {
                         if (arrayGoals[i] < moreGoals) {
                             moreGoals = arrayGoals[i];
                             moreGoals = i;
                         }
+                        System.out.println("The team that has scored the most is: " + arraynames[moreGoals]);
                     }
-                    System.out.println("The team that has scored the most is: " + arraynames[moreGoals]);
+
                     break;
                 case 6: //ok
                     float medValue = arrayGoals[0];
@@ -111,35 +114,40 @@ public class P19 {
                     break;
 
                 case 7: //no aparece el sout
-                    String TeamName;
-                    System.out.println("Tell me a team name");
-                    TeamName = keyboard.next();
-                    for (int i = 1; i < arrayNmax.length; i++) {
-                        if (TeamName == arraynames[i]) {
-                            TeamName = arraynames[i];
-                            int moreGoals2 = 0;
-                            for (int i1 = 1; i1 < arrayNmax.length; i1++) {
-                                if (arrayGoals2[i1] > moreGoals2) {
-                                    lessGoals = arrayGoals2[i1];
-                                    lessGoals = i1;
-                                    System.out.println("Se va al pozo");
-                                }else {
-                                    System.out.println("Nope");
-                                }
-                                    
-                            }
+                    int pointMin = arrayPoints[0];
+                    int positionMin = 0;
+                    for (int i = 0; i < arraynames.length; i++) {
+                        if (arrayPoints[i] < pointMin) {
+                            pointMin = arrayPoints[i];
+                            positionMin = i;
                         }
-                        
-                    }
+                    }                    
 
+                    System.out.println("Tell me a team name: ");
+                    String teamName = keyboard.next();
+                    if (teamName.equals(arrayPoints[positionMin])) {
+                        System.out.println("Down!!!");
+
+                    } else {
+                        System.out.println("Stay there");
+                    }
                     break;
+                    
+                    
                 case 8: //ok
                     for (int i = 0; i < Nmax; i++) {
                         System.out.println("Team: " + arraynames[i] + " got " + arrayPoints[i] + " points, and socred " + arrayGoals[i] + " goals, but the others teams, sored to " + arraynames[i] + " " + arrayGoals2[i] + " goals.");
                     }
                     break;
-                case 9:
-                    
+                case 9:                  
+                    for (int i = 0; i < arrayNmax.length; i++) {
+                        int sum = +arrayGoals[i];
+                        int subs = +arrayGoals2[i];
+                        int total = sum - subs;
+                        Math.abs(total);
+                        System.out.println("The difference is: " + total);
+                    }
+
                     break;
                 case 10: //ok
                     System.out.println("Quieres salir? Y/N");
